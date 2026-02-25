@@ -170,6 +170,34 @@ legal_document_chat/
 
 ✅ **Edge Case Analysis** with handling strategies
 
+✅ **Documentation**:
+- [`EDGE_CASES.md`](EDGE_CASES.md) - Detailed analysis of 8 edge cases with examples and solutions
+- [`ARCHITECTURE.md`](ARCHITECTURE.md) - Complete pipeline overview, design decisions, and trade-offs
+- [`README.md`](README.md) - Setup instructions and usage guide
+
+## Additional Documentation
+
+### Edge Case Analysis
+See [`EDGE_CASES.md`](EDGE_CASES.md) for comprehensive coverage of:
+- Ambiguous or missing fields
+- Conflicting clauses
+- Complex nested clauses
+- Queries with multiple answers
+- Extremely long sections
+- Trade names vs legal entities
+- Implicit or calculated values
+- OCR errors and formatting issues
+
+### Architecture & Design
+See [`ARCHITECTURE.md`](ARCHITECTURE.md) for detailed information on:
+- System architecture and component design
+- Data flow and processing pipeline
+- Technology stack and rationale
+- Design decisions and trade-offs
+- Assumptions and limitations
+- Performance considerations
+- Future enhancements
+
 ## Notes
 
 - First-time setup requires API keys in `.env` file
