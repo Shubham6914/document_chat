@@ -1,0 +1,41 @@
+# Core Dependencies
+streamlit
+python-dotenv
+
+# LLM and AI
+langchain
+langchain-community
+langchain-openai
+openai
+
+# Vector Database
+pinecone>=3.0.0
+sentence-transformers
+
+# Document Processing
+pypdf2
+pdfplumber
+python-docx
+PyMuPDF
+
+# Data Validation and Models
+pydantic
+pydantic-settings
+
+# Utilities
+loguru
+python-dateutil
+tiktoken
+
+# Testing
+pytest
+pytest-cov
+pytest-asyncio
+
+# Data Processing
+pandas
+numpy
+
+# HTTP Requests (for API calls)
+requests
+httpx

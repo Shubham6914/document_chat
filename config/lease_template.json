@@ -1,0 +1,109 @@
+{
+  "lease_summary_template": {
+    "required_fields": {
+      "tenant": {
+        "description": "Name and details of the lessee/tenant",
+        "type": "string",
+        "extraction_hints": ["tenant", "lessee", "renter"]
+      },
+      "landlord": {
+        "description": "Name and details of the lessor/landlord",
+        "type": "string",
+        "extraction_hints": ["landlord", "lessor", "owner"]
+      },
+      "lease_start_date": {
+        "description": "Commencement date of the lease",
+        "type": "date",
+        "extraction_hints": ["commencement", "start date", "effective date"]
+      },
+      "lease_end_date": {
+        "description": "Termination/expiration date of the lease",
+        "type": "date",
+        "extraction_hints": ["expiration", "end date", "termination date"]
+      },
+      "rent_amount": {
+        "description": "Monthly or periodic rent amount",
+        "type": "currency",
+        "extraction_hints": ["rent", "monthly payment", "rental amount"]
+      },
+      "renewal_options": {
+        "description": "Terms and conditions for lease renewal",
+        "type": "text",
+        "extraction_hints": ["renewal", "extension", "option to renew"]
+      },
+      "termination_clauses": {
+        "description": "Conditions and procedures for early termination",
+        "type": "text",
+        "extraction_hints": ["termination", "cancellation", "early exit"]
+      },
+      "security_deposit": {
+        "description": "Security deposit amount and terms",
+        "type": "currency",
+        "extraction_hints": ["security deposit", "damage deposit", "deposit"]
+      },
+      "special_provisions": {
+        "description": "Unique clauses or special conditions",
+        "type": "text",
+        "extraction_hints": ["special provisions", "additional terms", "special conditions"]
+      }
+    },
+    "optional_fields": {
+      "property_address": {
+        "description": "Physical address of the leased property",
+        "type": "string"
+      },
+      "square_footage": {
+        "description": "Size of the leased space",
+        "type": "number"
+      },
+      "permitted_use": {
+        "description": "Allowed uses of the property",
+        "type": "text"
+      },
+      "maintenance_responsibilities": {
+        "description": "Maintenance duties of tenant vs landlord",
+        "type": "text"
+      },
+      "insurance_requirements": {
+        "description": "Required insurance coverage",
+        "type": "text"
+      },
+      "utilities_responsibility": {
+        "description": "Who pays for which utilities",
+        "type": "text"
+      },
+      "parking_provisions": {
+        "description": "Parking spaces and terms",
+        "type": "text"
+      },
+      "subletting_policy": {
+        "description": "Rules regarding subletting or assignment",
+        "type": "text"
+      },
+      "late_payment_penalties": {
+        "description": "Fees for late rent payment",
+        "type": "text"
+      },
+      "notice_requirements": {
+        "description": "Required notice periods for various actions",
+        "type": "text"
+      },
+      "dispute_resolution": {
+        "description": "Process for resolving disputes",
+        "type": "text"
+      }
+    }
+  },
+  "extraction_config": {
+    "confidence_threshold": 0.7,
+    "max_retries": 3,
+    "use_fallback_methods": true,
+    "validate_extracted_data": true
+  },
+  "citation_format": {
+    "include_page_number": true,
+    "include_section_name": true,
+    "include_excerpt": true,
+    "max_excerpt_length": 200
+  }
+}
