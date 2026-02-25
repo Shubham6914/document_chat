@@ -238,7 +238,7 @@ class DocumentProcessor:
             Section identifier string or empty string
         """
         # Check first 300 characters for section markers
-        search_text = text[:300]
+        search_text = text[:500]
         
         # Simple patterns for common formats
         patterns = [
@@ -262,7 +262,7 @@ class DocumentProcessor:
         chunk_overlap: int = 200
     ) -> List[Dict[str, any]]:
         """
-        Split document into chunks with simple section metadata extraction.
+        Split document into chunks with metadata extraction.
         
         Args:
             document: Document dictionary from load_document
@@ -270,18 +270,18 @@ class DocumentProcessor:
             chunk_overlap: Overlap between chunks
             
         Returns:
-            List of document chunks with metadata including page and section info
+            List of document chunks with metadata
         """
         chunks = []
         chunk_id = 0
         
-        # For PDFs, chunk by page first to preserve page numbers
+        # For PDFs, chunk by page to preserve page numbers
         if document['file_type'] == 'pdf' and 'pages' in document:
             for page_info in document['pages']:
                 page_num = page_info['page_number']
                 page_text = page_info['text']
                 
-                # If page is small enough, keep it as one chunk
+                # If page fits in one chunk, keep it together
                 if len(page_text) <= chunk_size:
                     section_info = self._extract_section_from_text(page_text)
                     chunks.append({
@@ -304,7 +304,7 @@ class DocumentProcessor:
                         end = start + chunk_size
                         chunk_text = page_text[start:end]
                         
-                        # Try to break at sentence boundary
+                        # Break at sentence boundary if possible
                         if end < len(page_text):
                             last_period = chunk_text.rfind('.')
                             last_newline = chunk_text.rfind('\n')
@@ -331,7 +331,7 @@ class DocumentProcessor:
                         chunk_id += 1
                         start = end - chunk_overlap
         else:
-            # For non-PDF documents, use simple chunking
+            # For non-PDF documents (DOCX, TXT)
             text = document['full_text']
             start = 0
             
@@ -339,7 +339,7 @@ class DocumentProcessor:
                 end = start + chunk_size
                 chunk_text = text[start:end]
                 
-                # Try to break at sentence boundary
+                # Break at sentence boundary if possible
                 if end < len(text):
                     last_period = chunk_text.rfind('.')
                     last_newline = chunk_text.rfind('\n')

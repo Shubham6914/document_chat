@@ -1,8 +1,7 @@
 """
 Embeddings Module
-Handles text embedding generation for vector storage.
+Note: Embedding generation is now handled directly by VectorStore.
+This module is kept for potential future extensions.
 """
 
-from .embedding_service import EmbeddingGenerator
-
-__all__ = ['EmbeddingGenerator']
+__all__ = []

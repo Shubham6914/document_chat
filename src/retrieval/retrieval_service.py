@@ -6,10 +6,9 @@ Handles document retrieval with hybrid search (semantic + keyword).
 from typing import List, Dict, Any, Optional
 from src.utils.logger import app_logger as logger
 import re
-from collections import Counter
 
-from ..embeddings.embedding_service import EmbeddingGenerator
 from ..utils.exceptions import RetrievalError
+from config.settings import settings
 
 
 class RetrievalService:
@@ -26,7 +25,6 @@ class RetrievalService:
             vector_store: VectorStore instance for semantic search
         """
         self.vector_store = vector_store
-        self.embedding_generator = EmbeddingGenerator()
         self.semantic_weight = 0.7  # Weight for semantic search
         self.keyword_weight = 0.3   # Weight for keyword search
         
@@ -369,8 +367,8 @@ class RetrievalService:
         return {
             'semantic_weight': self.semantic_weight,
             'keyword_weight': self.keyword_weight,
-            'embedding_model': self.embedding_generator.model,
-            'embedding_dimension': self.embedding_generator.dimension
+            'embedding_model': settings.embedding_model,
+            'embedding_dimension': settings.embedding_dimension
         }
     
     def set_weights(self, semantic_weight: float, keyword_weight: float):
